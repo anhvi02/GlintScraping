@@ -1,5 +1,5 @@
 -- What is this? --
-A project to scrape data, which is job details in Viet Nam, from Glints 
+A project to scrape data, which is job details in Viet Nam, from Glints.
 Glint is an online talent recruitment and career discovery platform headquartered in Singapore. 
 It is a platform for young talent to build up their career readiness through internships and graduate jobs; developing skill sets required in different careers.
 
