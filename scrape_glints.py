@@ -47,13 +47,17 @@ html.send_keys(Keys.ESCAPE)
 # - Reciever gmail
 
 def search_keyword(keyword):
-    search_box = driver.find_element(By.XPATH,'//*[@id="__next"]/div/div[4]/div[2]/div[2]/div[2]/div[2]/div/div/div[1]/div/input')
+    # CHANGE XPATH
+    # search_box = driver.find_element(By.XPATH,'//*[@id="__next"]/div/div[4]/div[2]/div[2]/div[2]/div[2]/div/div/div[1]/div/input')
+    search_box = driver.find_element(By.XPATH,'//*[@id="__next"]/div/div[3]/div[2]/div[2]/div[2]/div[2]/div/div/div[1]/div/input')
     sleep(1)
     search_box.send_keys(Keys.CONTROL + "a")
     search_box.send_keys(Keys.DELETE)
     search_box.send_keys(keyword)
     sleep(1.5)
-    search_button = driver.find_element(By.XPATH,'//*[@id="__next"]/div/div[4]/div[2]/div[2]/div[2]/div[2]/div/div/div[3]/button')
+    # CHANGE XPATH
+    # search_button = driver.find_element(By.XPATH,'//*[@id="__next"]/div/div[4]/div[2]/div[2]/div[2]/div[2]/div/div/div[3]/button')
+    search_button = driver.find_element(By.XPATH,'//*[@id="__next"]/div/div[3]/div[2]/div[2]/div[2]/div[2]/div/div/div[3]/button')
     search_button.click()
 
 while True:
