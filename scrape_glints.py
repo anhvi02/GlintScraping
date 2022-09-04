@@ -47,8 +47,6 @@ html.send_keys(Keys.ESCAPE)
 # - Reciever gmail
 
 def search_keyword(keyword):
-    # CHANGE XPATH
-    # search_box = driver.find_element(By.XPATH,'//*[@id="__next"]/div/div[4]/div[2]/div[2]/div[2]/div[2]/div/div/div[1]/div/input')
     search_box = driver.find_element(By.XPATH,'//*[@id="__next"]/div/div[3]/div[2]/div[2]/div[2]/div[2]/div/div/div[1]/div/input')
     sleep(1)
     search_box.send_keys(Keys.CONTROL + "a")
@@ -142,7 +140,7 @@ while True:
     driver.execute_script("window.scrollTo(0, %s);" %target_height )
     sleep(2)
     try:
-        state = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[4]/div[2]/div[2]/div[2]/div[4]/div[2]/div[2]/span')
+        state = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[3]/div[2]/div[2]/div[2]/div[4]/div[2]/div[2]/span')
         if state.text == 'Đã tải lên tất cả cơ hội việc làm':
             print('-- All page loaded')
             # Noti
