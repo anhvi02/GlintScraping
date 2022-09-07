@@ -120,7 +120,7 @@ while True:
         hidden_answer = False 
         break 
     else:
-        pass
+        continue 
 
 # Refresh page to start scrolling
 driver.refresh()
@@ -199,21 +199,22 @@ def extract(link):
     except:
         item_dict['Location'] = None 
 
-    info = soup.select('div[class="TopFoldsc__JobOverViewInfo-sc-kklg8i-9 EWOdY"]')
-    info_list = []
-    for ite in info:
-        info_list.append(ite.text)
+
     # Salary range 
     try:
         salary_ele = soup.select('div[class="TopFoldsc__JobOverViewInfoContainer-sc-kklg8i-8 fgSCsF"]>div>span')[0]
         salary_txt = salary_ele.text 
-        salary = salary_txt.split('D')[1].split('/')[0]
-        info_list.remove(salary_txt)
-        item_dict['Salary'] = salary
+        item_dict['Salary'] = salary_txt
     except:
-        item_dict['Salary']= None 
-        
+        item_dict['Salary'] = None 
+
+
     # Experienc, Type, Field`
+    info = soup.select('div[class="TopFoldsc__JobOverViewInfo-sc-kklg8i-9 EWOdY"]')
+    info_list = []
+    for ite in info:
+        info_list.append(ite.text)
+
     item_dict['Experience'] = None
     item_dict['Type'] = None 
 
@@ -266,14 +267,14 @@ def extract(link):
         item_dict['Link'] = None 
     df_list.append(item_dict)
 
-
 # Import url from detail_urls
 #  import urls from the file
 urls = pd.read_csv('detail_urls.csv')
 urls = urls['Detail Urls']
 
 # Begin to scrap data
-print('-- Process:',end= ' ')
+print(f'-- URL count: {len(urls)}, estimated time: {len(urls)*5}s')
+print('-- Progress:',end= ' ')
 sleep_time = 5
 try:
     cnt = 0
@@ -287,7 +288,8 @@ try:
         try: 
             extract(link)
         except Exception as e:
-            pass 
+            print(f'-- Error raised: {e.__class__} ,at url number {cnt}. Passed to the next url')
+            continue
             
         cnt += 1
         # PROGRESS ANNOUNCEMENT
@@ -296,19 +298,21 @@ try:
 
     # Notification
     print(f'-- Successfully scraped all data!!')
+
     if hidden_answer == True:
         message = f'Successfully scraped all data!!\nTotal data records: {len(df_list)}\nTotal urls: {len(urls)}'
         sendemail(sender_gmail, sender_apppass, reciever, subject, message)
-except:
+
+except Exception as err:
+    print(f'-- Program shut down at url number {cnt}. Error: {err.__class__}')
+
     #  Notification
-    print(f'-- Error raised at url number {cnt}, program stopped')
     if hidden_answer == True:
         message = f'Error raised at url number {cnt}, program stopped\nData saved\nTotal urls: {len(urls)}'
         sendemail(sender_gmail, sender_apppass, reciever, subject, message)
-    pass
 
-
-# Save df to data file named ScrapedData
-df = pd.DataFrame(df_list)
-df.to_csv('ScrapedData.csv')
+finally:
+    # Save df to data file named ScrapedData
+    df = pd.DataFrame(df_list)
+    df.to_csv('ScrapedData.csv')
 
