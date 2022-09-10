@@ -3,6 +3,8 @@ This is a project built to scrap multiple job descriptions from Glints.
 Glint is an online talent recruitment and career discovery platform headquartered in Singapore. 
 It is a platform for young talent to build up their career readiness through internships and graduate jobs; developing skill sets required in different careers.
 
+-- Technology -- 
+- Python: selenium, beautifulsoup
 -- How to use? -- 
 1. Install required packages for your environment in requirements.txt
 2. Run the file scrape_glints.py 
