@@ -5,6 +5,7 @@ It is a platform for young talent to build up their career readiness through int
 
 -- Technology -- 
 - Python: selenium, beautifulsoup
+
 -- How to use? -- 
 1. Install required packages for your environment in requirements.txt
 2. Run the file scrape_glints.py 
