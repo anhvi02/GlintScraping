@@ -183,7 +183,8 @@ def extract(link):
 
     # Company Name
     try:
-        item_dict['Name'] = soup.select('div[class="TopFoldsc__JobOverviewHeader-sc-kklg8i-22 ihxBLZ"]')[0].text
+        item_dict['Name'] = soup.select('div[class="TopFoldsc__JobOverviewHeader-sc-kklg8i-24 gfOGEj"]')[0].text 
+        # TopFoldsc__JobOverviewHeader-sc-kklg8i-22 ihxBLZ
     except:
         item_dict['Name'] = None 
 
@@ -233,14 +234,16 @@ def extract(link):
 
     # Posted and Updated time
     try:
-        posted = soup.select('span[class="TopFoldsc__PostedAt-sc-kklg8i-11 eRKLIR"]')
+        posted = soup.select('span[class="TopFoldsc__PostedAt-sc-kklg8i-13 vnaHT"]')
+        # TopFoldsc__PostedAt-sc-kklg8i-11 eRKLIR
         posted = posted[0].text.split(' ',1)[1]
         item_dict['Posted'] = posted
     except:
         item_dict['Posted'] = None
 
     try:
-        updated = soup.select('span[class="TopFoldsc__UpdatedAt-sc-kklg8i-12 bYndtI"]')
+        updated = soup.select('span[class="TopFoldsc__UpdatedAt-sc-kklg8i-14 kjxTBC"]')
+        # TopFoldsc__UpdatedAt-sc-kklg8i-12 bYndtI
         updated = updated[0].text.split(' ',1)[1]
         item_dict['Updated'] = updated
     except:
