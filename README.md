@@ -16,7 +16,7 @@ and please confirm if you want to crawl jobs with the keyword (y/n)
   - Sender app password. This password is generated from gmail (eg: mmodryzaeyqeseoe)
   - Receiver email
 - The program will send you a message to tell you the setup was sucessful
-5. The prgramm will start to run. If the program finished or ran into error, you will receive messages
+5. The programm will start to run. If the program finished or ran into error, you will receive messages
 
 -- Author -- Vi Pham
 -- Thank you! --
