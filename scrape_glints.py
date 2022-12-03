@@ -244,7 +244,7 @@ def extract(link):
     try:
         updated = soup.select('span[class="TopFoldsc__UpdatedAt-sc-kklg8i-14 kjxTBC"]')
         # TopFoldsc__UpdatedAt-sc-kklg8i-12 bYndtI
-        updated = updated[0].text.split(' ',1)[1]
+        updated = updated[0].text.split(' ',2)[-1]
         item_dict['Updated'] = updated
     except:
         item_dict['Updated'] = None
